@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Camera Sender</title>
+  <style>body{font-family:sans-serif;margin:12px}video{width:100%;height:auto;background:#000}</style>
+</head>
+<body>
+  <h3>Sender (スマホで開く)</h3>
+  <p>URLに ?room=ROOM_ID を付けて同じ ROOM_ID をビューア側で使ってください。</p>
+  <video id="localVideo" autoplay playsinline muted></video>
+
+  <h4>手動シグナリング (サーバ無しでの接続)</h4>
+  <button id="startBtn">カメラ開始・Offer生成</button>
+  <p>生成された <strong>Local SDP</strong> をコピーして viewer 側に貼り付けてください。</p>
+  <textarea id="localSDP" rows="6" style="width:100%" readonly></textarea>
+  <div id="localQR" style="margin:12px 0"></div>
+
+  <p>viewer から返された <strong>Remote SDP (Answer)</strong> をここに貼り付けて「リモート設定」を押してください。</p>
+  <textarea id="remoteSDP" rows="6" style="width:100%"></textarea>
+  <br />
+  <button id="setRemoteBtn">リモート設定</button>
+
+  <script src="qrcode.min.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>

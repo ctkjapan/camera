@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Viewer</title>
+  <style>body{font-family:sans-serif;margin:12px}video{width:100%;height:auto;background:#000}</style>
+</head>
+<body>
+  <h3>Viewer (ブラウザで開く)</h3>
+  <p>同じ ROOM_ID を使って sender と接続します。例: <code>?room=myroom</code></p>
+  <video id="remoteVideo" autoplay playsinline controls></video>
+
+  <h4>手動シグナリング (サーバ無しでの接続)</h4>
+  <p>sender が生成した <strong>Offer SDP</strong> をここに貼り付け、<strong>Answer 生成</strong>を押してください。生成された Local SDP(Answer) を sender に渡してください。</p>
+  <textarea id="remoteSDP" rows="6" style="width:100%"></textarea>
+  <br />
+  <button id="answerBtn">Answer 生成</button>
+  <p>生成された <strong>Local SDP</strong>：</p>
+  <textarea id="localSDP" rows="6" style="width:100%" readonly></textarea>
+  <div id="localQR" style="margin:12px 0"></div>
+
+  <script src="qrcode.min.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
