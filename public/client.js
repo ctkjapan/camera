@@ -61,7 +61,8 @@
 
       const offer = await pc.createOffer();
       await pc.setLocalDescription(offer);
-      // wait for ICE gathering to complete; onicecandidate handles output
+      updateLocalOutput(JSON.stringify(pc.localDescription));
+      // wait for ICE gathering to complete; onicecandidate updates output again if needed
     } catch (e) {
       console.error('startSender error', e);
       alert('カメラにアクセスできません。file:// では getUserMedia が動かないブラウザがあります。');
@@ -77,7 +78,8 @@
       await pc.setRemoteDescription(offer);
       const answer = await pc.createAnswer();
       await pc.setLocalDescription(answer);
-      // local SDP will be populated when ICE gathering completes
+      updateLocalOutput(JSON.stringify(pc.localDescription));
+      // local SDP will also be updated when ICE gathering completes
     } catch (e) {
       console.error('createAnswer error', e);
       alert('Answer 生成に失敗しました: ' + e.message);
